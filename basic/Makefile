@@ -34,6 +34,10 @@ $(BUILD_DIR)/%.s:  %.c
 	$(info ===>  GENERATE ASM  $@)
 	$(Q)$(CC) -S $(CPPFLAGS) $(CFLAGS) $< -o $@
 
+$(BUILD_DIR)/%.s:  %.f90
+	$(info ===>  GENERATE ASM  $@)
+	$(Q)$(FC) -S  $(FCFLAGS) $< -o $@
+
 $(BUILD_DIR)/%.o:  %.cc
 	$(info ===>  COMPILE  $@)
 	$(Q)$(CXX) -c $(CPPFLAGS) $(CXXFLAGS) $< -o $@
