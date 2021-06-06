@@ -21,12 +21,9 @@ OBJ      += $(patsubst $(SRC_DIR)/%.f90, $(BUILD_DIR)/%.o,$(wildcard $(SRC_DIR)/
 OBJ      += $(patsubst $(SRC_DIR)/%.F90, $(BUILD_DIR)/%.o,$(wildcard $(SRC_DIR)/*.F90))
 CPPFLAGS := $(CPPFLAGS) $(DEFINES) $(INCLUDES)
 
-
 ${TARGET}: $(BUILD_DIR) $(OBJ)
 	$(info ===>  LINKING  $(TARGET))
 	$(Q)${LINKER} ${LFLAGS} -o $(TARGET) $(OBJ) $(LIBS)
-
-asm:  $(BUILD_DIR) $(ASM)
 
 $(BUILD_DIR)/%.o:  %.c $(MAKE_DIR)/include_$(TAG).mk
 	$(info ===>  COMPILE  $@)
@@ -36,7 +33,6 @@ $(BUILD_DIR)/%.o:  %.c $(MAKE_DIR)/include_$(TAG).mk
 $(BUILD_DIR)/%.s:  %.c
 	$(info ===>  GENERATE ASM  $@)
 	$(Q)$(CC) -S $(CPPFLAGS) $(CFLAGS) $< -o $@
-
 
 $(BUILD_DIR)/%.o:  %.cc
 	$(info ===>  COMPILE  $@)
@@ -56,14 +52,7 @@ $(BUILD_DIR)/%.o:  %.F90
 	$(info ===>  COMPILE  $@)
 	$(Q)$(FC) -c  $(CPPFLAGS)  $(FCFLAGS) $< -o $@
 
-$(BUILD_DIR):
-	@mkdir $(BUILD_DIR)
-
-ifeq ($(findstring $(MAKECMDGOALS),clean),)
--include $(OBJ:.o=.d)
-endif
-
-.PHONY: clean distclean tags info
+.PHONY: clean distclean tags info asm
 
 clean:
 	$(info ===>  CLEAN)
@@ -71,13 +60,20 @@ clean:
 	@rm -f tags
 
 distclean: clean
-	$(info ===> DIST CLEAN)
+	$(info ===>  DIST CLEAN)
 	@rm -f $(TARGET)
 
 info:
 	$(info $(CFLAGS))
 	$(Q)$(CC) $(VERSION)
 
+asm:  $(BUILD_DIR) $(ASM)
+
 tags:
-	$(info ===>  GENERATE  TAGS)
+	$(info ===>  GENERATE TAGS)
 	$(Q)ctags -R
+
+$(BUILD_DIR):
+	@mkdir $(BUILD_DIR)
+
+-include $(OBJ:.o=.d)
