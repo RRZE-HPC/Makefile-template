@@ -47,3 +47,9 @@ to clean intermediate build results and binary.
 make asm
 ```
 The assembler files will also be located in the `<TAG>` directory.
+  
+(Optional) Toolchain infos:
+```
+make info
+```
+output the compiler version and currently set compiler flags.
