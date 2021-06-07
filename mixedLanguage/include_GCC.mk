@@ -11,6 +11,7 @@ ANSI_CFLAGS += -Wextra
 CFLAGS   = -O2 -g -Wno-format  -Wall $(ANSI_CFLAGS)
 CXXFLAGS = $(CFLAGS)
 FCFLAGS  =
+VERSION  = -v
 LFLAGS   =
 DEFINES  = -D_GNU_SOURCE
 INCLUDES =
