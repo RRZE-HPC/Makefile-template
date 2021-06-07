@@ -1,5 +1,6 @@
 CC   = clang
-GCC  = gcc
+CXX  = $(CC)
+FC   = flang
 LINKER = $(CC)
 
 ifeq ($(strip $(ENABLE_OPENMP)),true)
@@ -10,6 +11,9 @@ endif
 
 VERSION  = --version
 CFLAGS   = -Ofast -std=c99 $(OPENMP)
+CXXFLAGS = $(CFLAGS)
+FCFLAGS  =
+VERSION  = -v
 LFLAGS   = $(OPENMP)
 DEFINES  = -D_GNU_SOURCE
 INCLUDES =

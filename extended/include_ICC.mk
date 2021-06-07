@@ -1,13 +1,16 @@
 CC   = icc
-GCC  = gcc
+CXX = icpc
+FC  = ifort
 LINKER = $(CC)
 
 ifeq ($(strip $(ENABLE_OPENMP)),true)
 OPENMP   = -qopenmp
 endif
 
+CFLAGS   = -O3 -std=c99 $(OPENMP)
+CXXFLAGS = $(CFLAGS)
+FCFLAGS  = -O3 -module ./$(TAG)
 VERSION  = --version
-CFLAGS   =  -fast -xHost -qopt-streaming-stores=always -std=c99 -ffreestanding $(OPENMP)
 LFLAGS   = $(OPENMP)
 DEFINES  = -D_GNU_SOURCE
 INCLUDES =

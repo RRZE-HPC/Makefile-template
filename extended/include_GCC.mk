@@ -1,13 +1,16 @@
 CC   = gcc
-GCC  = gcc
+CXX = g++
+FC  = gfortran
 LINKER = $(CC)
 
 ifeq ($(strip $(ENABLE_OPENMP)),true)
 OPENMP   = -fopenmp
 endif
 
-VERSION  = --version
 CFLAGS   = -Ofast -ffreestanding -std=c99 $(OPENMP)
+CXXFLAGS = $(CFLAGS)
+FCFLAGS  =
+VERSION  = -v
 LFLAGS   = $(OPENMP)
 DEFINES  = -D_GNU_SOURCE
 INCLUDES =
