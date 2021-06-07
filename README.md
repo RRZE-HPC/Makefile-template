@@ -20,11 +20,11 @@ Other projects based on this template are:
 * https://github.com/RRZE-HPC/MD-Bench
 * https://github.com/RRZE-HPC/likwid
 
-**NOTICE**
+**NOTICE for Fortran**
 
 For Fortran90 the dependencies must be specified by hand. Add them in dep.mk and uncomment the line at the end of the Makefile.
 You can find a real Fortran90 example [here](https://github.com/RRZE-HPC/HPCCG-F90). A discussion of Fortran90 build issues is for example [here](https://aoterodelaroza.github.io/devnotes/modern-fortran-makefiles/).
-
+Flags must be set that specify that module files are located in `$(BUILD_DIR)`.
 
 ## Usage
 

@@ -10,7 +10,7 @@ Q         ?= @
 include $(MAKE_DIR)/config.mk
 include $(MAKE_DIR)/include_$(TAG).mk
 include $(MAKE_DIR)/include_LIKWID.mk
-INCLUDES  += -I$(SRC_DIR)/includes
+INCLUDES  += -I$(SRC_DIR)/includes -I$(BUILD_DIR)
 
 VPATH     = $(SRC_DIR)
 ASM       = $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.s,$(wildcard $(SRC_DIR)/*.c))
