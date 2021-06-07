@@ -13,7 +13,18 @@ Generic Makefile templates fulfilling the following requirements:
 Variants provided:
 * **basic** - A simple generic Makefile template you can use for small projects.
 * **extended** - A generic Makefile template that showcases support for build options.
-* **mixedLanguage** - A generic Makefile template for mixed language C/F90 application.
+* **mixedLanguage** - A generic Makefile template for a mixed language C/F90 application.
+
+Other projects based on this template are:
+* https://github.com/RRZE-HPC/TheBandwidthBenchmark
+* https://github.com/RRZE-HPC/MD-Bench
+* https://github.com/RRZE-HPC/likwid
+
+**NOTICE**
+
+For Fortran90 the dependencies must be specified by hand. Add them in dep.mk and uncomment the line at the end of the Makefile.
+You can find a real Fortran90 example [here](https://github.com/RRZE-HPC/HPCCG-F90). A discussion of Fortran90 build issues is for example [here](https://aoterodelaroza.github.io/devnotes/modern-fortran-makefiles/).
+
 
 ## Usage
 
@@ -47,9 +58,15 @@ to clean intermediate build results and binary.
 make asm
 ```
 The assembler files will also be located in the `<TAG>` directory.
-  
+
 (Optional) Toolchain infos:
 ```
 make info
 ```
 output the compiler version and currently set compiler flags.
+
+(Optional) Generate tags:
+```
+make tags
+```
+creates tags with ctags.

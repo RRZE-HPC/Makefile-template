@@ -1,2 +1,3 @@
-# Makefile-template
-A generic Makefile template for C, C++ and Fortran programs
+# Basic Makefile template
+
+This is a basic template you can use as a starting point for your software projects.

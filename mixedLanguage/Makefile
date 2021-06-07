@@ -81,4 +81,6 @@ $(BUILD_DIR):
 	@mkdir $(BUILD_DIR)
 
 -include $(OBJ:.o=.d)
+
+# Add explicit dependencies for Fortran90 modules
 #include $(MAKE_DIR)/dep.mk
