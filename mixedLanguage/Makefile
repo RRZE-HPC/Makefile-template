@@ -1,4 +1,4 @@
-TAG = CLANG
+TAG = ICC
 
 #CONFIGURE BUILD SYSTEM
 TARGET	   = bench-$(TAG)
@@ -9,7 +9,7 @@ Q         ?= @
 
 #DO NOT EDIT BELOW
 include $(MAKE_DIR)/include_$(TAG).mk
-INCLUDES  += -I$(SRC_DIR)/includes
+INCLUDES  += -I$(SRC_DIR)/includes -I$(BUILD_DIR)
 
 VPATH     = $(SRC_DIR)
 ASM       = $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.s,$(wildcard $(SRC_DIR)/*.c))
@@ -50,7 +50,7 @@ $(BUILD_DIR)/%.o:  %.cpp
 
 $(BUILD_DIR)/%.o:  %.f90
 	$(info ===>  COMPILE  $@)
-	$(Q)$(FC) -c  $(FCFLAGS) $< -o $@
+	$(Q)$(FC) -c  $(CPPFLAGS) $(FCFLAGS) $< -o $@
 
 $(BUILD_DIR)/%.o:  %.F90
 	$(info ===>  COMPILE  $@)
@@ -81,3 +81,4 @@ $(BUILD_DIR):
 	@mkdir $(BUILD_DIR)
 
 -include $(OBJ:.o=.d)
+#include $(MAKE_DIR)/dep.mk

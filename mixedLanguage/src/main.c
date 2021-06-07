@@ -1,12 +1,12 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-extern void _printAnswer(void);
+extern void benchmarks_mp_printanswer_(void);
 
 int main (int argc, char** argv)
 {
     printf("Hello world\n");
-    _printAnswer();
+    benchmarks_mp_printanswer_();
 
     return EXIT_SUCCESS;
 }
