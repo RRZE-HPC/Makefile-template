@@ -26,7 +26,7 @@ ${TARGET}: $(BUILD_DIR) $(OBJ)
 	$(info ===>  LINKING  $(TARGET))
 	$(Q)${LINKER} ${LFLAGS} -o $(TARGET) $(OBJ) $(LIBS)
 
-$(BUILD_DIR)/%.o:  %.c $(MAKE_DIR)/include_$(TAG).mk
+$(BUILD_DIR)/%.o:  %.c $(MAKE_DIR)/include_$(TAG).mk $(MAKE_DIR)/config.mk
 	$(info ===>  COMPILE  $@)
 	$(Q)$(CC) -c $(CPPFLAGS) $(CFLAGS) $< -o $@
 	$(Q)$(CC) $(CPPFLAGS) -MT $(@:.d=.o) -MM  $< > $(BUILD_DIR)/$*.d
