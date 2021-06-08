@@ -1,4 +1,4 @@
-TAG = ICC
+TAG ?= ICC
 
 #CONFIGURE BUILD SYSTEM
 TARGET	   = bench-$(TAG)
