@@ -1,4 +1,3 @@
-
 #CONFIGURE BUILD SYSTEM
 TARGET	   = bench-$(TAG)
 BUILD_DIR  = ./$(TAG)
@@ -29,7 +28,7 @@ ${TARGET}: $(BUILD_DIR) $(OBJ)
 $(BUILD_DIR)/%.o:  %.c $(MAKE_DIR)/include_$(TAG).mk $(MAKE_DIR)/config.mk
 	$(info ===>  COMPILE  $@)
 	$(Q)$(CC) -c $(CPPFLAGS) $(CFLAGS) $< -o $@
-	$(Q)$(CC) $(CPPFLAGS) -MT $(@:.d=.o) -MM  $< > $(BUILD_DIR)/$*.d
+	$(Q)$(CC) $(CPPFLAGS) -MT $@ -MM  $< > $(BUILD_DIR)/$*.d
 
 $(BUILD_DIR)/%.s:  %.c
 	$(info ===>  GENERATE ASM  $@)
@@ -42,12 +41,12 @@ $(BUILD_DIR)/%.s:  %.f90
 $(BUILD_DIR)/%.o:  %.cc
 	$(info ===>  COMPILE  $@)
 	$(Q)$(CXX) -c $(CPPFLAGS) $(CXXFLAGS) $< -o $@
-	$(Q)$(CXX) $(CPPFLAGS) -MT $(@:.d=.o) -MM  $< > $(BUILD_DIR)/$*.d
+	$(Q)$(CXX) $(CPPFLAGS) -MT $@ -MM  $< > $(BUILD_DIR)/$*.d
 
 $(BUILD_DIR)/%.o:  %.cpp
 	$(info ===>  COMPILE  $@)
 	$(Q)$(CXX) -c $(CPPFLAGS) $(CXXFLAGS) $< -o $@
-	$(Q)$(CXX) $(CPPFLAGS) -MT $(@:.d=.o) -MM  $< > $(BUILD_DIR)/$*.d
+	$(Q)$(CXX) $(CPPFLAGS) -MT $@ -MM  $< > $(BUILD_DIR)/$*.d
 
 $(BUILD_DIR)/%.o:  %.f90
 	$(info ===>  COMPILE  $@)
