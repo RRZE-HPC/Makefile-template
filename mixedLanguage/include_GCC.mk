@@ -10,9 +10,9 @@ ANSI_CFLAGS += -Wextra
 
 CFLAGS   = -O2 -g -Wno-format  -Wall $(ANSI_CFLAGS)
 CXXFLAGS = $(CFLAGS)
-FCFLAGS  =
+FCFLAGS  = -J ./$(TAG)
 VERSION  = -v
 LFLAGS   =
-DEFINES  = -D_GNU_SOURCE
+DEFINES  = -D_GNU_SOURCE -DGCC
 INCLUDES =
-LIBS     =
+LIBS     = -lgfortran

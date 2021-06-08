@@ -9,6 +9,8 @@
 #include <allocate.h>
 #include <likwid-marker.h>
 
+#define HLINE "----------------------------------------------------------------------------\n"
+
 #define LIKWID_PROFILE(tag,call) \
     _Pragma ("omp parallel") \
    {LIKWID_MARKER_START(#tag);} \
@@ -86,6 +88,7 @@ int main (int argc, char** argv)
 
     LIKWID_PROFILE(TRIAD,triad(a, b, c, 1.1, N));
     printf("Time: %11.4fs\n", time);
+    LIKWID_MARKER_CLOSE;
 
     return EXIT_SUCCESS;
 }

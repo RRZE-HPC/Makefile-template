@@ -7,8 +7,8 @@ Generic Makefile templates fulfilling the following requirements:
 * **Separation of build configuration** and Makefile
 * Support for **multiple tool chains** / build configurations
 * Multiple **simultaneous builds** possible in same directory
-* Support **C, C++ and Fortran**
-* Support **mixed language** applications
+* Support for **C, C++ and Fortran**
+* Support for **mixed language** applications
 
 Variants provided:
 * **basic** - A simple generic Makefile template you can use for small projects.
@@ -43,30 +43,32 @@ make Q=
 ```
 
 3. Clean up:
+Clean intermediate build results.
 ```
 make clean
 ```
-to clean intermediate build results.
 
+Clean intermediate build results and binary.
 ```
 make distclean
 ```
-to clean intermediate build results and binary.
 
 4. (Optional) Generate assembler:
+The assembler files will also be located in the `<TAG>` directory.
 ```
 make asm
 ```
-The assembler files will also be located in the `<TAG>` directory.
 
-(Optional) Toolchain infos:
+
+5. (Optional) Toolchain infos:
+Output the compiler version and currently set compiler flags.
 ```
 make info
 ```
-output the compiler version and currently set compiler flags.
 
-(Optional) Generate tags:
+6. (Optional) Generate tags:
+Creates tags with ctags.
 ```
 make tags
 ```
-creates tags with ctags.
+
