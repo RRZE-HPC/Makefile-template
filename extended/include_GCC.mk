@@ -9,7 +9,7 @@ endif
 
 CFLAGS   = -Ofast -ffreestanding -std=c99 $(OPENMP)
 CXXFLAGS = $(CFLAGS)
-FCFLAGS  =
+FCFLAGS  = -J ./$(TAG)
 VERSION  = -v
 LFLAGS   = $(OPENMP)
 DEFINES  = -D_GNU_SOURCE
